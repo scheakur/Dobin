@@ -15,10 +15,47 @@ import * as appActions from './actions/app';
 
 class App extends Component {
 
+  constructor(...args) {
+    super(...args);
+
+    this.state = {
+      started: Date.now(),
+      now: Date.now(),
+    };
+  }
+
+
+  componentDidMount() {
+    this.id = setInterval(() => {
+      this.setState({
+        now: Date.now(),
+      });
+    }, 1000);
+  }
+
+
+  componentWillUnmount() {
+    if (this.id) {
+      clearInterval(this.id);
+    }
+  }
+
+
+  padLeft(num) {
+    return ('0' + num).slice(-2);
+  }
+
+
   render() {
+    const elapsed = (this.state.now - this.state.started) / 1000;
+
+    const seconds = this.padLeft(Math.floor(elapsed % 60));
+    const minutes = this.padLeft(Math.floor(elapsed / 60) % 60);
+    const hours = this.padLeft(Math.floor(elapsed / 60 / 60) % 60);
+
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>App</Text>
+        <Text style={styles.text}>{hours}:{minutes}:{seconds}</Text>
       </View>
     );
   }
@@ -41,6 +78,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   text: {
+    fontFamily: 'Courier New',
     fontSize: 20,
     color: '#f00',
   },
