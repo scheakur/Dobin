@@ -12,7 +12,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as appActions from './actions/app';
 
-import Timer from './components/Timer';
+import { Timer } from './components';
 
 class App extends Component {
 
