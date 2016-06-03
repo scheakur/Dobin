@@ -12,7 +12,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as appActions from './actions/app';
 
-import { Timer } from './components';
+import Nav from './Nav';
 
 class App extends Component {
 
@@ -24,7 +24,7 @@ class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Timer refs="timer" minutes={3}/>
+        <Nav/>
       </View>
     );
   }
@@ -43,7 +43,5 @@ export default connect(
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
