@@ -9,7 +9,10 @@ import {
 
 import { connect } from 'react-redux';
 
-import { Home } from './scenes';
+import {
+  Home,
+  TaskForm,
+} from './scenes';
 
 
 class Nav extends Component {
@@ -27,12 +30,21 @@ class Nav extends Component {
       return Navigator.SceneConfigs.PushFromRight;
     }
 
+    if (route.taskForm) {
+      return Navigator.SceneConfigs.FloatFromBottom;
+    }
+
     return Navigator.SceneConfigs.HorizontalSwipeJump;
   }
 
 
   renderScene(route, navigator) {
     console.log('render route', route);
+    if (route.taskForm) {
+      return (
+        <TaskForm navigator={navigator} {...route}/>
+      );
+    }
 
     return (
       <Home navigator={navigator} {...route}/>

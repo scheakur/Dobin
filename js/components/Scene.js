@@ -21,7 +21,7 @@ export default class Scene extends Component {
     return (
       <View style={[styles.container, style]}>
         <StatusBar barStyle={STATUS_BAR_STYLE}/>
-        <Header title={title}/>
+        <Header title={title} leftItem={leftItem} rightItem={rightItem}/>
         {this.props.children}
       </View>
     );
@@ -32,6 +32,8 @@ export default class Scene extends Component {
 
 Scene.propTypes = {
   title: PropTypes.string,
+  leftItem: PropTypes.object,
+  rightItem: PropTypes.object,
 };
 
 

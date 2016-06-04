@@ -11,27 +11,23 @@ import {
 
 import { Scene } from '../components';
 
-export default class TaskList extends Component {
+export default class TaskForm extends Component {
 
-
-  makeAddButton() {
+  makeCloseButton() {
     return {
       type: 'icon',
-      iconName: 'add',
+      iconName: 'close',
       onPress: () => {
-        this.props.navigator.push({
-          taskForm: true,
-          title: 'New Task',
-        });
+        this.props.navigator.pop();
       },
-    }
+    };
   }
 
   render() {
     return (
-      <Scene title="Task List" rightItem={this.makeAddButton()}>
+      <Scene title={this.props.title} leftItem={this.makeCloseButton()}>
         <View style={styles.container}>
-          <Text style={styles.text}>TaskList</Text>
+          <Text style={styles.text}>TaskForm</Text>
         </View>
       </Scene>
     );
@@ -40,7 +36,7 @@ export default class TaskList extends Component {
 }
 
 
-TaskList.propTypes = {
+TaskForm.propTypes = {
   navigator: PropTypes.object,
 };
 
