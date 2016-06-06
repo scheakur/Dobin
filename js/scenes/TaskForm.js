@@ -15,6 +15,11 @@ import { connect } from 'react-redux';
 import { Scene } from '../components';
 import actions from '../actions';
 
+import {
+  THEME_COLOR,
+  THEME_COLOR_INV,
+} from '../const';
+
 class TaskForm extends Component {
 
   constructor(...args) {
@@ -67,8 +72,8 @@ class TaskForm extends Component {
             onChangeText={(text) => this.setState({ taskTitle: text})}
             defaultValue={this.state.taskTitle}
           />
-          <TouchableOpacity onPress={this.addTask}>
-            <Text>Save</Text>
+          <TouchableOpacity style={styles.button} onPress={this.addTask}>
+            <Text style={styles.buttonText}>Save</Text>
           </TouchableOpacity>
         </View>
       </Scene>
@@ -107,5 +112,14 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     borderColor: '#ccc',
     padding: 3,
+  },
+  button: {
+    backgroundColor: THEME_COLOR,
+    margin: 3,
+    paddingHorizontal: 10,
+    paddingVertical: 3,
+  },
+  buttonText: {
+    color: THEME_COLOR_INV,
   },
 });
