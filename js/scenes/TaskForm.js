@@ -69,7 +69,7 @@ class TaskForm extends Component {
             ref="input"
             style={styles.input}
             placeholder="Input task..."
-            onChangeText={(text) => this.setState({ taskTitle: text})}
+            onChangeText={taskTitle => this.setState({ taskTitle })}
             defaultValue={this.state.taskTitle}
           />
           <TouchableOpacity style={styles.button} onPress={this.addTask}>
