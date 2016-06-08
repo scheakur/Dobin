@@ -23,8 +23,6 @@ export default class Home extends Component {
   constructor(...args) {
     super(...args);
 
-    this.onSelectTab = this.onSelectTab.bind(this);
-
     this.state = {
       selectedTab: 'tasklist',
     }
