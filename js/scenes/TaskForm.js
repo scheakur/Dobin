@@ -33,6 +33,11 @@ class TaskForm extends Component {
   }
 
 
+  componentDidMount() {
+    this.refs.input.focus();
+  }
+
+
   addTask() {
     if (this.state.taskTitle.trim().length === 0) {
       return;
