@@ -113,10 +113,10 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 30,
-    width: 300,
     borderWidth: 0.5,
     borderColor: '#ccc',
     padding: 3,
+    marginHorizontal: 10,
   },
   button: {
     backgroundColor: THEME_COLOR,

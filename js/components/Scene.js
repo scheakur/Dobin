@@ -11,7 +11,7 @@ import {
 
 import { Header } from './';
 
-import { STATUS_BAR_STYLE } from '../const';
+import { STATUS_BAR_STYLE, HEADER_HEIGHT } from '../const';
 
 export default class Scene extends Component {
 
@@ -22,7 +22,9 @@ export default class Scene extends Component {
       <View style={[styles.container, style]}>
         <StatusBar barStyle={STATUS_BAR_STYLE}/>
         <Header title={title} leftItem={leftItem} rightItem={rightItem}/>
-        {this.props.children}
+        <View style={styles.contents}>
+          {this.props.children}
+        </View>
       </View>
     );
   }
@@ -45,9 +47,11 @@ Scene.defaultProps = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
     backgroundColor: '#fff',
+  },
+  contents: {
+    flex: 1,
+    marginTop: HEADER_HEIGHT,
   },
   text: {
     fontSize: 20,

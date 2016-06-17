@@ -4,6 +4,7 @@ import React, {
 } from 'react';
 
 import {
+  ListView,
   StyleSheet,
   Text,
   View,
@@ -13,6 +14,23 @@ import { connect } from 'react-redux';
 import { Scene } from '../components';
 
 class TaskList extends Component {
+
+  constructor(...args) {
+    super(...args);
+
+    this.renderRow = this.renderRow.bind(this);
+
+    const ds = new ListView.DataSource({
+      rowHasChanged: (r1, r2) => r1 !== r2,
+    });
+
+    const [props] = args;
+
+    this.state = {
+      dataSource: ds.cloneWithRows(props.tasks),
+    };
+  }
+
 
   makeAddButton() {
     return {
@@ -28,24 +46,24 @@ class TaskList extends Component {
   }
 
 
-  renderTasks() {
-    return this.props.tasks.map((task, index) => {
-      return (
-        <View key={`task-${index}`}>
-          <Text>{task.title}</Text>
-        </View>
-      );
-    });
+  renderRow(task, sectionId, rowId) {
+    return (
+      <View style={styles.task} key={`task-${sectionId}-${rowId}`}>
+        <Text>{task.title}</Text>
+      </View>
+    );
   }
 
 
   render() {
     return (
       <Scene title="Task List" rightItem={this.makeAddButton()}>
-        <View style={styles.container}>
-          <Text style={styles.text}>TaskList</Text>
-          {this.renderTasks()}
-        </View>
+        <ListView
+          contentContainerStyle={styles.container}
+          enableEmptySections
+          dataSource={this.state.dataSource.cloneWithRows(this.props.tasks)}
+          renderRow={this.renderRow}
+        />
       </Scene>
     );
   }
@@ -66,9 +84,10 @@ export default connect(
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    marginTop: -18,
+  },
+  task: {
+    paddingHorizontal: 4,
   },
   text: {
     fontSize: 20,
