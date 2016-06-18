@@ -2,7 +2,13 @@ import { handleActions } from 'redux-actions';
 
 const initialState = {
   adding: false,
-  tasks: [],
+  tasks: [
+    //FIXME remove these
+    // These are for debug
+    { title: 'Taks 001  001 001 001 001 001 001' },
+    { title: 'Taks 002  002 002 002 002 002 002 002 002 002 002 002' },
+    { title: 'Taks 003  003 003 003 003 003 003 003 003 003 003 003 003 003 003 003' },
+  ],
 };
 
 
