@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 
 import { connect } from 'react-redux';
-import { Scene } from '../components';
+import { Scene, Task } from '../components';
 
 class TaskList extends Component {
 
@@ -48,9 +48,7 @@ class TaskList extends Component {
 
   renderRow(task, sectionId, rowId) {
     return (
-      <View style={styles.task} key={`task-${sectionId}-${rowId}`}>
-        <Text>{task.title}</Text>
-      </View>
+      <Task {...task} key={`task-${sectionId}-${rowId}`}/>
     );
   }
 
@@ -85,9 +83,6 @@ export default connect(
 const styles = StyleSheet.create({
   container: {
     marginTop: -18,
-  },
-  task: {
-    paddingHorizontal: 4,
   },
   text: {
     fontSize: 20,
