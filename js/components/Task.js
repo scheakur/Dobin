@@ -9,8 +9,6 @@ import {
   View,
 } from 'react-native';
 
-import { THEME_COLOR } from '../const';
-
 export default class Task extends Component {
 
   render() {
@@ -31,10 +29,13 @@ Task.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 4,
+    paddingHorizontal: 10,
+    paddingVertical: 10,
+    borderBottomWidth: 0.5,
+    borderBottomColor: '#ccc'
   },
   text: {
-    fontSize: 20,
-    color: THEME_COLOR,
+    fontSize: 18,
+    color: '#333',
   },
 });
