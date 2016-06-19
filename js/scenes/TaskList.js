@@ -32,6 +32,11 @@ class TaskList extends Component {
   }
 
 
+  startTimer(task) {
+    this.props.home.selectTab('taskTimer');
+  }
+
+
   makeAddButton() {
     return {
       type: 'icon',
@@ -48,7 +53,10 @@ class TaskList extends Component {
 
   renderRow(task, sectionId, rowId) {
     return (
-      <Task {...task} key={`task-${sectionId}-${rowId}`}/>
+      <Task
+        {...task}
+        key={`task-${sectionId}-${rowId}`}
+        onPressStart={this.startTimer.bind(this, task)}/>
     );
   }
 

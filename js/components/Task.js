@@ -5,16 +5,39 @@ import React, {
 
 import {
   StyleSheet,
+  TouchableOpacity,
   Text,
   View,
 } from 'react-native';
 
+import { THEME_COLOR } from '../const';
+
 export default class Task extends Component {
+
+
+  renderTitle() {
+    return (
+      <View style={styles.title}>
+        <Text style={styles.text}>{this.props.title}</Text>
+      </View>
+    );
+  }
+
+
+  renderStartButton() {
+    return (
+      <TouchableOpacity onPress={this.props.onPressStart}>
+        <Text style={styles.button}>{`START`}</Text>
+      </TouchableOpacity>
+    );
+  }
+
 
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>{this.props.title}</Text>
+        {this.renderTitle()}
+        {this.renderStartButton()}
       </View>
     );
   }
@@ -24,6 +47,7 @@ export default class Task extends Component {
 
 Task.propTypes = {
   title: PropTypes.string,
+  onPressStart: PropTypes.func,
 };
 
 
@@ -32,10 +56,19 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 10,
     borderBottomWidth: 0.5,
-    borderBottomColor: '#ccc'
+    borderBottomColor: '#ccc',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  title: {
+    flex: 1,
   },
   text: {
     fontSize: 18,
     color: '#333',
+  },
+  button: {
+    color: THEME_COLOR,
   },
 });

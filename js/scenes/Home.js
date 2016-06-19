@@ -24,7 +24,7 @@ export default class Home extends Component {
     super(...args);
 
     this.state = {
-      selectedTab: 'tasklist',
+      selectedTab: 'taskList',
     }
   }
 
@@ -34,7 +34,7 @@ export default class Home extends Component {
   }
 
 
-  onSelectTab(selectedTab) {
+  selectTab(selectedTab) {
     this.setState({ selectedTab });
   }
 
@@ -45,23 +45,23 @@ export default class Home extends Component {
         <TabBarItemIOS
           title="Task List"
           iconName="playlist-add-check"
-          selected={this.isSelected('tasklist')}
-          onPress={this.onSelectTab.bind(this, 'tasklist')}>
-          <TaskList {...this.props}/>
+          selected={this.isSelected('taskList')}
+          onPress={this.selectTab.bind(this, 'taskList')}>
+          <TaskList {...this.props} home={this}/>
         </TabBarItemIOS>
         <TabBarItemIOS
           title="Timer"
           iconName="timer"
-          selected={this.isSelected('tasktimer')}
-          onPress={this.onSelectTab.bind(this, 'tasktimer')}>
-          <TaskTimer {...this.props}/>
+          selected={this.isSelected('taskTimer')}
+          onPress={this.selectTab.bind(this, 'taskTimer')}>
+          <TaskTimer {...this.props} home={this}/>
         </TabBarItemIOS>
         <TabBarItemIOS
           title="Settings"
           iconName="settings"
           selected={this.isSelected('settings')}
-          onPress={this.onSelectTab.bind(this, 'settings')}>
-          <Settings {...this.props}/>
+          onPress={this.selectTab.bind(this, 'settings')}>
+          <Settings {...this.props} home={this}/>
         </TabBarItemIOS>
       </TabBarIOS>
     );
