@@ -12,6 +12,8 @@ import {
 
 import { THEME_COLOR } from '../const';
 
+import { TextButton } from '../components';
+
 export default class Task extends Component {
 
 
@@ -26,9 +28,7 @@ export default class Task extends Component {
 
   renderStartButton() {
     return (
-      <TouchableOpacity onPress={this.props.onPressStart}>
-        <Text style={styles.button}>{`START`}</Text>
-      </TouchableOpacity>
+      <TextButton label={`START`} onPress={this.props.onPressStart}/>
     );
   }
 
@@ -67,8 +67,5 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 18,
     color: '#333',
-  },
-  button: {
-    color: THEME_COLOR,
   },
 });
