@@ -5,12 +5,9 @@ import React, {
 
 import {
   StyleSheet,
-  TouchableOpacity,
   Text,
   View,
 } from 'react-native';
-
-import { THEME_COLOR } from '../const';
 
 import { TextButton } from '../components';
 
