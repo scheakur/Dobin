@@ -15,8 +15,12 @@ export default class TextButton extends Component {
 
   render() {
     return (
-      <TouchableOpacity onPress={this.props.onPress}>
-        <Text style={styles.button}>{this.props.label}</Text>
+      <TouchableOpacity
+        style={[this.props.containerStyle]}
+        onPress={this.props.onPress}>
+        <Text style={[styles.button, this.props.textStyle]}>
+          {this.props.label}
+        </Text>
       </TouchableOpacity>
     );
   }
@@ -27,6 +31,8 @@ export default class TextButton extends Component {
 TextButton.propTypes = {
   label: PropTypes.string,
   onPress: PropTypes.func,
+  containerStyle: PropTypes.object,
+  textStyle: PropTypes.object,
 };
 
 
