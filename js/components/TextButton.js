@@ -11,22 +11,19 @@ import {
 
 import { THEME_COLOR } from '../const';
 
-export default class TextButton extends Component {
+const TextButton = props => {
+  return (
+    <TouchableOpacity
+      style={[props.containerStyle]}
+      onPress={props.onPress}>
+      <Text style={[styles.button, props.textStyle]}>
+        {props.label}
+      </Text>
+    </TouchableOpacity>
+  );
+};
 
-  render() {
-    return (
-      <TouchableOpacity
-        style={[this.props.containerStyle]}
-        onPress={this.props.onPress}>
-        <Text style={[styles.button, this.props.textStyle]}>
-          {this.props.label}
-        </Text>
-      </TouchableOpacity>
-    );
-  }
-
-}
-
+export default TextButton;
 
 TextButton.propTypes = {
   label: PropTypes.string,
