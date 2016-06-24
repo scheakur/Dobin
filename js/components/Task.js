@@ -13,7 +13,6 @@ import { TextButton } from '../components';
 
 export default class Task extends Component {
 
-
   renderTitle() {
     return (
       <View style={styles.title}>
