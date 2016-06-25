@@ -1,5 +1,5 @@
-export const THEME_COLOR = '#f00';
-export const THEME_COLOR_INV = '#fff';
+export const THEME_COLOR = '#e91e63';
+export const THEME_COLOR_INV = '#fce4ec';
 export const STATUS_BAR_STYLE = 'light-content';
 
 export const STATUS_BAR_HEIGHT = 20;
