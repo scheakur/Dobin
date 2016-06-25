@@ -33,11 +33,6 @@ class TaskForm extends Component {
   }
 
 
-  componentDidMount() {
-    this.refs.input.focus();
-  }
-
-
   addTask() {
     if (this.state.taskTitle.trim().length === 0) {
       return;
@@ -69,16 +64,17 @@ class TaskForm extends Component {
     return (
       <Scene title={this.props.title} leftItem={this.makeCloseButton()}>
         <View style={styles.container}>
-          <Text style={styles.text}>TaskForm</Text>
           <TextInput
             ref="input"
             style={styles.input}
             placeholder="Input task..."
             onChangeText={taskTitle => this.setState({ taskTitle })}
+            multiline={true}
+            autoFocus={true}
             defaultValue={this.state.taskTitle}
           />
           <TouchableOpacity style={styles.button} onPress={this.addTask}>
-            <Text style={styles.buttonText}>Save</Text>
+            <Text style={styles.buttonText}>SAVE</Text>
           </TouchableOpacity>
         </View>
       </Scene>
@@ -105,26 +101,26 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    fontSize: 20,
-    color: '#f00',
+    justifyContent: 'flex-start',
   },
   input: {
-    height: 30,
-    borderWidth: 0.5,
-    borderColor: '#ccc',
+    height: 120,
     padding: 3,
-    marginHorizontal: 10,
+    fontSize: 18,
+    backgroundColor: '#ffffff',
   },
   button: {
-    backgroundColor: THEME_COLOR,
-    margin: 3,
-    paddingHorizontal: 10,
-    paddingVertical: 3,
+    alignSelf: 'stretch',
+    backgroundColor: '#eeeeee',
+    borderTopWidth: 0.5,
+    borderTopColor: '#bdbdbd',
+    borderBottomWidth: 0.5,
+    borderBottomColor: '#bdbdbd',
+    padding: 10,
   },
   buttonText: {
-    color: THEME_COLOR_INV,
+    color: THEME_COLOR,
+    textAlign: 'center',
+    fontSize: 20,
   },
 });
