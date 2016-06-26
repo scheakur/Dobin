@@ -7,17 +7,20 @@ import {
   ListView,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
 
 import { connect } from 'react-redux';
 import { Scene, Task } from '../components';
+import { THEME_COLOR } from '../const';
 
 class TaskList extends Component {
 
   constructor(...args) {
     super(...args);
 
+    this.showTaskForm = this.showTaskForm.bind(this);
     this.renderRow = this.renderRow.bind(this);
 
     const ds = new ListView.DataSource({
@@ -34,6 +37,14 @@ class TaskList extends Component {
 
   startTimer(task) {
     this.props.home.selectTab('taskTimer');
+  }
+
+
+  showTaskForm() {
+    this.props.navigator.push({
+      taskForm: true,
+      title: 'New Task',
+    });
   }
 
 
@@ -70,6 +81,11 @@ class TaskList extends Component {
           dataSource={this.state.dataSource.cloneWithRows(this.props.tasks)}
           renderRow={this.renderRow}
         />
+        <View style={styles.buttonContaienr}>
+          <TouchableOpacity style={styles.button} onPress={this.showTaskForm}>
+            <Text style={styles.buttonText}>{`ADD TASK`}</Text>
+          </TouchableOpacity>
+        </View>
       </Scene>
     );
   }
@@ -95,5 +111,18 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
     color: '#f00',
+  },
+  buttonContaienr: {
+    bottom: 49,
+  },
+  button: {
+    alignSelf: 'stretch',
+    backgroundColor: '#eeeeee',
+    padding: 10,
+  },
+  buttonText: {
+    color: THEME_COLOR,
+    textAlign: 'center',
+    fontSize: 20,
   },
 });
