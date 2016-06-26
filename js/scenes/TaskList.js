@@ -12,8 +12,8 @@ import {
 } from 'react-native';
 
 import { connect } from 'react-redux';
-import { Scene, Task } from '../components';
-import { THEME_COLOR } from '../const';
+import { RowButton, Scene, Task } from '../components';
+import { THEME_COLOR, TAB_BAR_HEIGHT } from '../const';
 
 class TaskList extends Component {
 
@@ -82,9 +82,7 @@ class TaskList extends Component {
           renderRow={this.renderRow}
         />
         <View style={styles.buttonContaienr}>
-          <TouchableOpacity style={styles.button} onPress={this.showTaskForm}>
-            <Text style={styles.buttonText}>{`ADD TASK`}</Text>
-          </TouchableOpacity>
+          <RowButton label={`ADD TASK`} onPress={this.showTaskForm}/>
         </View>
       </Scene>
     );
@@ -113,16 +111,6 @@ const styles = StyleSheet.create({
     color: '#f00',
   },
   buttonContaienr: {
-    bottom: 49,
-  },
-  button: {
-    alignSelf: 'stretch',
-    backgroundColor: '#e0e0e0',
-    padding: 10,
-  },
-  buttonText: {
-    color: THEME_COLOR,
-    textAlign: 'center',
-    fontSize: 20,
+    bottom: TAB_BAR_HEIGHT,
   },
 });

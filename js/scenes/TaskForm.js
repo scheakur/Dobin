@@ -7,12 +7,11 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  TouchableOpacity,
   View,
 } from 'react-native';
 
 import { connect } from 'react-redux';
-import { Scene } from '../components';
+import { RowButton, Scene } from '../components';
 import actions from '../actions';
 
 import {
@@ -73,9 +72,7 @@ class TaskForm extends Component {
             autoFocus={true}
             defaultValue={this.state.taskTitle}
           />
-          <TouchableOpacity style={styles.button} onPress={this.addTask}>
-            <Text style={styles.buttonText}>SAVE</Text>
-          </TouchableOpacity>
+          <RowButton label={`SAVE`} onPress={this.addTask}/>
         </View>
       </Scene>
     );
@@ -108,15 +105,5 @@ const styles = StyleSheet.create({
     padding: 3,
     fontSize: 18,
     backgroundColor: '#ffffff',
-  },
-  button: {
-    alignSelf: 'stretch',
-    backgroundColor: '#e0e0e0',
-    padding: 10,
-  },
-  buttonText: {
-    color: THEME_COLOR,
-    textAlign: 'center',
-    fontSize: 20,
   },
 });
