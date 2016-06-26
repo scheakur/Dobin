@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
   },
   button: {
     alignSelf: 'stretch',
-    backgroundColor: '#eeeeee',
+    backgroundColor: '#e0e0e0',
     padding: 10,
   },
   buttonText: {
