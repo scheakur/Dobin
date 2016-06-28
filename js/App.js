@@ -1,7 +1,4 @@
-import React, {
-  Component,
-  PropTypes,
-} from 'react';
+import React from 'react';
 
 import {
   StyleSheet,
@@ -14,22 +11,18 @@ import * as appActions from './actions/app';
 
 import Nav from './Nav';
 
-class App extends Component {
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
 
-  constructor(...args) {
-    super(...args);
-  }
 
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <Nav/>
-      </View>
-    );
-  }
-
-}
+const App = () => (
+  <View style={styles.container}>
+    <Nav />
+  </View>
+);
 
 
 export default connect(
@@ -39,9 +32,3 @@ export default connect(
   })
 )(App);
 
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
