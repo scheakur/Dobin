@@ -21,69 +21,6 @@ import {
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-export default class Header extends Component {
-
-  constructor(...args) {
-    super(...args);
-
-    this.state = {
-      width: Dimensions.get('window').width,
-    };
-  }
-
-
-  renderItem(item) {
-    if (!item) {
-      // spacer
-      return (
-        <View style={styles.item}/>
-      );
-    }
-
-    if (item.type === 'icon') {
-      return (
-        <TouchableOpacity style={styles.item} onPress={item.onPress}>
-          <Icon style={styles.icon} name={item.iconName} size={20}/>
-        </TouchableOpacity>
-      );
-    }
-
-    return (
-      <Icon style={styles.icon} name="help" size={20}/>
-    );
-  }
-
-
-  render() {
-    const width = {
-      width: this.state.width,
-    };
-
-    return (
-      <View style={[styles.container, width]}>
-        {this.renderItem(this.props.leftItem)}
-        <View style={styles.titleContainer}>
-          <Text style={styles.title}>{this.props.title}</Text>
-        </View>
-        {this.renderItem(this.props.rightItem)}
-      </View>
-    );
-  }
-
-}
-
-
-Header.propTypes = {
-  title: PropTypes.string,
-  leftItem: PropTypes.object,
-  rightItem: PropTypes.object,
-};
-
-
-Header.defaultProps = {
-  title: '',
-};
-
 
 const styles = StyleSheet.create({
   container: {
@@ -119,3 +56,67 @@ const styles = StyleSheet.create({
     color: THEME_COLOR_INV,
   },
 });
+
+
+export default class Header extends Component {
+
+  constructor(...args) {
+    super(...args);
+
+    this.state = {
+      width: Dimensions.get('window').width,
+    };
+  }
+
+
+  renderItem(item) {
+    if (!item) {
+      // spacer
+      return (
+        <View style={styles.item} />
+      );
+    }
+
+    if (item.type === 'icon') {
+      return (
+        <TouchableOpacity style={styles.item} onPress={item.onPress}>
+          <Icon style={styles.icon} name={item.iconName} size={20} />
+        </TouchableOpacity>
+      );
+    }
+
+    return (
+      <Icon style={styles.icon} name="help" size={20} />
+    );
+  }
+
+
+  render() {
+    const width = {
+      width: this.state.width,
+    };
+
+    return (
+      <View style={[styles.container, width]}>
+        {this.renderItem(this.props.leftItem)}
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>{this.props.title}</Text>
+        </View>
+        {this.renderItem(this.props.rightItem)}
+      </View>
+    );
+  }
+
+}
+
+
+Header.propTypes = {
+  title: PropTypes.string,
+  leftItem: PropTypes.object,
+  rightItem: PropTypes.object,
+};
+
+
+Header.defaultProps = {
+  title: '',
+};
