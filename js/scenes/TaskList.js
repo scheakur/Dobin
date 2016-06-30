@@ -6,14 +6,27 @@ import React, {
 import {
   ListView,
   StyleSheet,
-  Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
 
 import { connect } from 'react-redux';
 import { RowButton, Scene, Task } from '../components';
-import { THEME_COLOR, TAB_BAR_HEIGHT } from '../const';
+import { TAB_BAR_HEIGHT } from '../const';
+
+
+const styles = StyleSheet.create({
+  container: {
+    marginTop: -18,
+  },
+  text: {
+    fontSize: 20,
+    color: '#f00',
+  },
+  buttonContaienr: {
+    bottom: TAB_BAR_HEIGHT,
+  },
+});
+
 
 class TaskList extends Component {
 
@@ -36,6 +49,7 @@ class TaskList extends Component {
 
 
   startTimer(task) {
+    console.log(task);
     this.props.home.selectTab('taskTimer');
   }
 
@@ -58,7 +72,7 @@ class TaskList extends Component {
           title: 'New Task',
         });
       },
-    }
+    };
   }
 
 
@@ -67,7 +81,8 @@ class TaskList extends Component {
       <Task
         {...task}
         key={`task-${sectionId}-${rowId}`}
-        onPressStart={this.startTimer.bind(this, task)}/>
+        onPressStart={() => this.startTimer(task)}
+      />
     );
   }
 
@@ -82,7 +97,7 @@ class TaskList extends Component {
           renderRow={this.renderRow}
         />
         <View style={styles.buttonContaienr}>
-          <RowButton label={`ADD TASK`} onPress={this.showTaskForm}/>
+          <RowButton label={"ADD TASK"} onPress={this.showTaskForm} />
         </View>
       </Scene>
     );
@@ -93,6 +108,8 @@ class TaskList extends Component {
 
 TaskList.propTypes = {
   navigator: PropTypes.object,
+  tasks: PropTypes.object,
+  home: PropTypes.object,
 };
 
 
@@ -101,16 +118,3 @@ export default connect(
   null
 )(TaskList);
 
-
-const styles = StyleSheet.create({
-  container: {
-    marginTop: -18,
-  },
-  text: {
-    fontSize: 20,
-    color: '#f00',
-  },
-  buttonContaienr: {
-    bottom: TAB_BAR_HEIGHT,
-  },
-});
