@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 import {
   StyleSheet,
@@ -8,15 +8,6 @@ import {
 
 import { THEME_COLOR } from '../const';
 
-const RowButton = props => {
-  return (
-    <TouchableOpacity style={styles.button} onPress={props.onPress}>
-      <Text style={styles.buttonText}>{props.label}</Text>
-    </TouchableOpacity>
-  );
-};
-
-export default RowButton;
 
 const styles = StyleSheet.create({
   button: {
@@ -30,3 +21,19 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
 });
+
+
+const RowButton = props => (
+  <TouchableOpacity style={styles.button} onPress={props.onPress}>
+    <Text style={styles.buttonText}>{props.label}</Text>
+  </TouchableOpacity>
+);
+
+
+RowButton.propTypes = {
+  onPress: PropTypes.func,
+  label: PropTypes.string,
+};
+
+
+export default RowButton;
