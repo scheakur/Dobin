@@ -1,7 +1,4 @@
-import React, {
-  Component,
-  PropTypes,
-} from 'react';
+import React, { PropTypes } from 'react';
 
 import {
   StyleSheet,
@@ -11,19 +8,22 @@ import {
 
 import { THEME_COLOR } from '../const';
 
-const TextButton = props => {
-  return (
-    <TouchableOpacity
-      style={[props.containerStyle]}
-      onPress={props.onPress}>
-      <Text style={[styles.button, props.textStyle]}>
-        {props.label}
-      </Text>
-    </TouchableOpacity>
-  );
-};
 
-export default TextButton;
+const styles = StyleSheet.create({
+  button: {
+    color: THEME_COLOR,
+  },
+});
+
+
+const TextButton = props => (
+  <TouchableOpacity style={[props.containerStyle]} onPress={props.onPress}>
+    <Text style={[styles.button, props.textStyle]}>
+      {props.label}
+    </Text>
+  </TouchableOpacity>
+);
+
 
 TextButton.propTypes = {
   label: PropTypes.string,
@@ -33,8 +33,4 @@ TextButton.propTypes = {
 };
 
 
-const styles = StyleSheet.create({
-  button: {
-    color: THEME_COLOR,
-  },
-});
+export default TextButton;
