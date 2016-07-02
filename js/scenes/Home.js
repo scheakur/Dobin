@@ -4,7 +4,6 @@ import React, {
 } from 'react';
 
 import {
-  StyleSheet,
   TabBarIOS,
 } from 'react-native';
 
@@ -25,7 +24,7 @@ export default class Home extends Component {
 
     this.state = {
       selectedTab: 'taskList',
-    }
+    };
   }
 
 
@@ -46,22 +45,25 @@ export default class Home extends Component {
           title="Task List"
           iconName="playlist-add-check"
           selected={this.isSelected('taskList')}
-          onPress={this.selectTab.bind(this, 'taskList')}>
-          <TaskList {...this.props} home={this}/>
+          onPress={() => this.selectTab('taskList')}
+        >
+          <TaskList {...this.props} home={this} />
         </TabBarItemIOS>
         <TabBarItemIOS
           title="Timer"
           iconName="timer"
           selected={this.isSelected('taskTimer')}
-          onPress={this.selectTab.bind(this, 'taskTimer')}>
-          <TaskTimer {...this.props} home={this}/>
+          onPress={() => this.selectTab('taskTimer')}
+        >
+          <TaskTimer {...this.props} home={this} />
         </TabBarItemIOS>
         <TabBarItemIOS
           title="Settings"
           iconName="settings"
           selected={this.isSelected('settings')}
-          onPress={this.selectTab.bind(this, 'settings')}>
-          <Settings {...this.props} home={this}/>
+          onPress={() => this.selectTab('settings')}
+        >
+          <Settings {...this.props} home={this} />
         </TabBarItemIOS>
       </TabBarIOS>
     );
