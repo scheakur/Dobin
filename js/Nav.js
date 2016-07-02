@@ -15,6 +15,13 @@ import {
 } from './scenes';
 
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
+
+
 class Nav extends Component {
 
   constructor(props) {
@@ -42,12 +49,12 @@ class Nav extends Component {
     console.log('render route', route);
     if (route.taskForm) {
       return (
-        <TaskForm navigator={navigator} {...route}/>
+        <TaskForm navigator={navigator} {...route} />
       );
     }
 
     return (
-      <Home navigator={navigator} {...route}/>
+      <Home navigator={navigator} {...route} />
     );
   }
 
@@ -69,11 +76,3 @@ class Nav extends Component {
 
 
 export default connect(({ app }) => ({ app }))(Nav);
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
-
