@@ -11,6 +11,27 @@ import {
 
 import { TextButton } from '../components';
 
+
+const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: 10,
+    paddingVertical: 10,
+    borderBottomWidth: 0.5,
+    borderBottomColor: '#ccc',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  title: {
+    flex: 1,
+  },
+  text: {
+    fontSize: 18,
+    color: '#333',
+  },
+});
+
+
 export default class Task extends Component {
 
   renderTitle() {
@@ -24,7 +45,7 @@ export default class Task extends Component {
 
   renderStartButton() {
     return (
-      <TextButton label={`START`} onPress={this.props.onPressStart}/>
+      <TextButton label={'START'} onPress={this.props.onPressStart} />
     );
   }
 
@@ -45,23 +66,3 @@ Task.propTypes = {
   title: PropTypes.string,
   onPressStart: PropTypes.func,
 };
-
-
-const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: 10,
-    paddingVertical: 10,
-    borderBottomWidth: 0.5,
-    borderBottomColor: '#ccc',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    flex: 1,
-  },
-  text: {
-    fontSize: 18,
-    color: '#333',
-  },
-});
