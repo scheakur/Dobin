@@ -3,7 +3,7 @@ import { handleActions } from 'redux-actions';
 const initialState = {
   adding: false,
   tasks: [
-    //FIXME remove these
+    // FIXME remove these
     // These are for debug
     { title: 'Taks 001  001 001 001 001 001 001' },
     { title: 'Taks 002  002 002 002 002 002 002 002 002 002 002 002' },
@@ -14,7 +14,7 @@ const initialState = {
 
 export default handleActions({
 
-  'add task: start'(state, action) {
+  'add task: start'(state) {
     return Object.assign({}, state, {
       adding: true,
     });
