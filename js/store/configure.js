@@ -1,9 +1,7 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import reducers from '../reducers';
 
-const configure = () => {
-  return applyMiddleware(thunk)(createStore)(reducers);
-};
+const configure = () => applyMiddleware(thunk)(createStore)(reducers);
 
 export default configure;
