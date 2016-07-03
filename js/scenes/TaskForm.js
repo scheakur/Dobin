@@ -5,7 +5,6 @@ import React, {
 
 import {
   StyleSheet,
-  Text,
   TextInput,
   View,
 } from 'react-native';
@@ -14,10 +13,21 @@ import { connect } from 'react-redux';
 import { RowButton, Scene } from '../components';
 import actions from '../actions';
 
-import {
-  THEME_COLOR,
-  THEME_COLOR_INV,
-} from '../const';
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  input: {
+    height: 120,
+    padding: 3,
+    fontSize: 18,
+    backgroundColor: '#ffffff',
+  },
+});
+
 
 class TaskForm extends Component {
 
@@ -68,11 +78,11 @@ class TaskForm extends Component {
             style={styles.input}
             placeholder="Input task..."
             onChangeText={taskTitle => this.setState({ taskTitle })}
-            multiline={true}
-            autoFocus={true}
+            multiline
+            autoFocus
             defaultValue={this.state.taskTitle}
           />
-          <RowButton label={`SAVE`} onPress={this.addTask}/>
+          <RowButton label={'SAVE'} onPress={this.addTask} />
         </View>
       </Scene>
     );
@@ -83,6 +93,8 @@ class TaskForm extends Component {
 
 TaskForm.propTypes = {
   navigator: PropTypes.object,
+  addTask: PropTypes.func,
+  title: PropTypes.string,
 };
 
 
@@ -92,18 +104,3 @@ export default connect(
     addTask: (task) => dispatch(actions.addTask(task)),
   })
 )(TaskForm);
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-  },
-  input: {
-    height: 120,
-    padding: 3,
-    fontSize: 18,
-    backgroundColor: '#ffffff',
-  },
-});
