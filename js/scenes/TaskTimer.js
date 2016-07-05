@@ -9,26 +9,7 @@ import {
   View,
 } from 'react-native';
 
-import { Scene } from '../components';
-
-export default class TaskTimer extends Component {
-
-  render() {
-    return (
-      <Scene title="Timer">
-        <View style={styles.container}>
-          <Text style={styles.text}>TaskTimer</Text>
-        </View>
-      </Scene>
-    );
-  }
-
-}
-
-
-TaskTimer.propTypes = {
-  navigator: PropTypes.object,
-};
+import { Scene, Timer } from '../components';
 
 
 const styles = StyleSheet.create({
@@ -42,3 +23,29 @@ const styles = StyleSheet.create({
     color: '#f00',
   },
 });
+
+
+export default class TaskTimer extends Component {
+
+  renderTimer() {
+    return (
+      <Timer minutes={25} />
+    );
+  }
+
+  render() {
+    return (
+      <Scene title="Timer">
+        <View style={styles.container}>
+          {this.renderTimer()}
+        </View>
+      </Scene>
+    );
+  }
+
+}
+
+
+TaskTimer.propTypes = {
+  navigator: PropTypes.object,
+};

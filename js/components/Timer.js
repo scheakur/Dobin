@@ -10,6 +10,8 @@ import {
   View,
 } from 'react-native';
 
+import { THEME_COLOR, THEME_COLOR_INV } from '../const';
+
 
 const styles = StyleSheet.create({
   container: {
@@ -19,19 +21,20 @@ const styles = StyleSheet.create({
   },
   text: {
     fontFamily: 'Courier New',
-    fontSize: 20,
+    fontSize: 44,
     color: '#222',
   },
   button: {
     margin: 10,
-    paddingVertical: 10,
-    width: 100,
-    backgroundColor: '#009',
+    padding: 10,
+    width: 200,
+    backgroundColor: THEME_COLOR,
     alignItems: 'center',
     justifyContent: 'center',
   },
   buttonText: {
-    color: '#fff',
+    color: THEME_COLOR_INV,
+    fontSize: 28,
   },
 });
 
