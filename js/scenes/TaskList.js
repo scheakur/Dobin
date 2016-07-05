@@ -108,7 +108,7 @@ class TaskList extends Component {
 
 TaskList.propTypes = {
   navigator: PropTypes.object,
-  tasks: PropTypes.object,
+  tasks: PropTypes.array,
   home: PropTypes.object,
 };
 

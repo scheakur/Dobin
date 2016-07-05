@@ -47,7 +47,7 @@ Scene.propTypes = {
   leftItem: PropTypes.object,
   rightItem: PropTypes.object,
   style: PropTypes.object,
-  children: PropTypes.array,
+  children: PropTypes.node,
 };
 
 
