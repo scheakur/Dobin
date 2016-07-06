@@ -9,7 +9,7 @@ import {
   View,
 } from 'react-native';
 
-import { TextButton } from '../components';
+import { CheckBox } from '../components';
 
 
 const styles = StyleSheet.create({
@@ -29,10 +29,19 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#333',
   },
+  checkBox: {
+    marginRight: 4,
+  },
 });
 
 
 export default class Task extends Component {
+
+  renderCheckBox() {
+    return (
+      <CheckBox style={styles.checkBox} />
+    );
+  }
 
   renderTitle() {
     return (
@@ -43,18 +52,11 @@ export default class Task extends Component {
   }
 
 
-  renderStartButton() {
-    return (
-      <TextButton label={'START'} onPress={this.props.onPressStart} />
-    );
-  }
-
-
   render() {
     return (
       <View style={styles.container}>
+        {this.renderCheckBox()}
         {this.renderTitle()}
-        {this.renderStartButton()}
       </View>
     );
   }
@@ -63,6 +65,6 @@ export default class Task extends Component {
 
 
 Task.propTypes = {
+  checked: PropTypes.bool,
   title: PropTypes.string,
-  onPressStart: PropTypes.func,
 };

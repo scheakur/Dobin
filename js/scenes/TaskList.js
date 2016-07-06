@@ -81,7 +81,6 @@ class TaskList extends Component {
       <Task
         {...task}
         key={`task-${sectionId}-${rowId}`}
-        onPressStart={() => this.startTimer(task)}
       />
     );
   }
