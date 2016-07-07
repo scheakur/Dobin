@@ -10,31 +10,36 @@ import {
   View,
 } from 'react-native';
 
-import { THEME_COLOR, THEME_COLOR_INV } from '../const';
+import { THEME_COLOR, THEME_COLOR_INV, TAB_BAR_HEIGHT } from '../const';
 
+const BUTTON_WIDTH = 100;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#e0e0e0',
   },
   text: {
     fontFamily: 'Courier New',
-    fontSize: 44,
+    fontSize: 24,
     color: '#222',
   },
+  spacer: {
+    width: BUTTON_WIDTH,
+  },
   button: {
-    margin: 10,
-    padding: 10,
-    width: 200,
-    backgroundColor: THEME_COLOR,
+    padding: 8,
+    width: BUTTON_WIDTH,
+    height: TAB_BAR_HEIGHT,
     alignItems: 'center',
     justifyContent: 'center',
   },
   buttonText: {
-    color: THEME_COLOR_INV,
-    fontSize: 28,
+    color: THEME_COLOR,
+    fontSize: 20,
   },
 });
 
@@ -94,6 +99,12 @@ export default class Timer extends Component {
   }
 
 
+  renderSpacer() {
+    return (
+      <View style={styles.spacer} />
+    );
+  }
+
   renderButton(label, onPress) {
     return (
       <TouchableOpacity style={styles.button} onPress={onPress}>
@@ -126,6 +137,7 @@ export default class Timer extends Component {
 
     return (
       <View style={styles.container}>
+        {this.renderSpacer()}
         <Text style={styles.text}>{hours}:{minutes}:{seconds}</Text>
         {this.renderToggleButton()}
       </View>

@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 
 import { connect } from 'react-redux';
-import { RowButton, Scene, Task } from '../components';
+import { RowButton, Scene, Task, Timer } from '../components';
 import { TAB_BAR_HEIGHT } from '../const';
 
 
@@ -18,9 +18,8 @@ const styles = StyleSheet.create({
   container: {
     marginTop: -18,
   },
-  text: {
-    fontSize: 20,
-    color: '#f00',
+  timerContaienr: {
+    top: 0,
   },
   buttonContaienr: {
     bottom: TAB_BAR_HEIGHT,
@@ -62,20 +61,6 @@ class TaskList extends Component {
   }
 
 
-  makeAddButton() {
-    return {
-      type: 'icon',
-      iconName: 'add',
-      onPress: () => {
-        this.props.navigator.push({
-          taskForm: true,
-          title: 'New Task',
-        });
-      },
-    };
-  }
-
-
   renderRow(task, sectionId, rowId) {
     return (
       <Task
@@ -88,7 +73,10 @@ class TaskList extends Component {
 
   render() {
     return (
-      <Scene title="Task List" rightItem={this.makeAddButton()}>
+      <Scene title="Task List">
+        <View style={styles.timerContaienr}>
+          <Timer minutes={25} />
+        </View>
         <ListView
           contentContainerStyle={styles.container}
           enableEmptySections
