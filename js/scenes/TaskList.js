@@ -47,12 +47,6 @@ class TaskList extends Component {
   }
 
 
-  startTimer(task) {
-    console.log(task);
-    this.props.home.selectTab('taskTimer');
-  }
-
-
   showTaskForm() {
     this.props.navigator.push({
       taskForm: true,
