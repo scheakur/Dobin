@@ -10,8 +10,9 @@ import {
 } from 'react-native';
 
 import { connect } from 'react-redux';
-import { RowButton, Scene, Task, Timer } from '../components';
+import { Scene, Task, TaskForm, Timer } from '../components';
 import { TAB_BAR_HEIGHT } from '../const';
+import actions from '../actions';
 
 
 const styles = StyleSheet.create({
@@ -21,7 +22,7 @@ const styles = StyleSheet.create({
   timerContaienr: {
     top: 0,
   },
-  buttonContaienr: {
+  formContaienr: {
     bottom: TAB_BAR_HEIGHT,
   },
 });
@@ -77,8 +78,8 @@ class TaskList extends Component {
           dataSource={this.state.dataSource.cloneWithRows(this.props.tasks)}
           renderRow={this.renderRow}
         />
-        <View style={styles.buttonContaienr}>
-          <RowButton label={"ADD TASK"} onPress={this.showTaskForm} />
+        <View style={styles.formContaienr}>
+          <TaskForm onSave={this.props.addTask} />
         </View>
       </Scene>
     );
@@ -91,11 +92,14 @@ TaskList.propTypes = {
   navigator: PropTypes.object,
   tasks: PropTypes.array,
   home: PropTypes.object,
+  addTask: PropTypes.func,
 };
 
 
 export default connect(
   ({ tasks }) => ({ tasks: tasks.tasks }),
-  null
+  (dispatch) => ({
+    addTask: (task) => dispatch(actions.addTask(task)),
+  })
 )(TaskList);
 
