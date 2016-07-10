@@ -10,7 +10,7 @@ import {
 import { connect } from 'react-redux';
 
 import {
-  Home,
+  TaskList,
   TaskForm,
 } from './scenes';
 
@@ -54,7 +54,7 @@ class Nav extends Component {
     }
 
     return (
-      <Home navigator={navigator} {...route} />
+      <TaskList navigator={navigator} {...route} />
     );
   }
 

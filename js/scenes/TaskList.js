@@ -11,19 +11,15 @@ import {
 
 import { connect } from 'react-redux';
 import { Scene, Task, TaskForm, Timer } from '../components';
-import { TAB_BAR_HEIGHT } from '../const';
 import actions from '../actions';
 
 
 const styles = StyleSheet.create({
-  container: {
-    marginTop: -18,
-  },
   timerContaienr: {
     top: 0,
   },
   formContaienr: {
-    bottom: TAB_BAR_HEIGHT,
+    bottom: 0,
   },
 });
 
@@ -73,7 +69,6 @@ class TaskList extends Component {
           <Timer minutes={25} />
         </View>
         <ListView
-          contentContainerStyle={styles.container}
           enableEmptySections
           dataSource={this.state.dataSource.cloneWithRows(this.props.tasks)}
           renderRow={this.renderRow}
@@ -91,7 +86,6 @@ class TaskList extends Component {
 TaskList.propTypes = {
   navigator: PropTypes.object,
   tasks: PropTypes.array,
-  home: PropTypes.object,
   addTask: PropTypes.func,
 };
 
