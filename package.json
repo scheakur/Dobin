@@ -7,8 +7,8 @@
     "lint": "eslint --quiet --cache --ext .js js"
   },
   "dependencies": {
-    "react": "^15.0.2",
-    "react-native": "^0.26.0",
+    "react": "^15.1.2",
+    "react-native": "^0.29.0",
     "react-native-vector-icons": "^2.0.3",
     "react-redux": "^4.4.5",
     "redux": "^3.5.2",
