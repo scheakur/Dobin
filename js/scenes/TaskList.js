@@ -29,7 +29,6 @@ class TaskList extends Component {
   constructor(...args) {
     super(...args);
 
-    this.showTaskForm = this.showTaskForm.bind(this);
     this.renderRow = this.renderRow.bind(this);
 
     const ds = new ListView.DataSource({
@@ -41,14 +40,6 @@ class TaskList extends Component {
     this.state = {
       dataSource: ds.cloneWithRows(props.tasks),
     };
-  }
-
-
-  showTaskForm() {
-    this.props.navigator.push({
-      taskForm: true,
-      title: 'New Task',
-    });
   }
 
 
