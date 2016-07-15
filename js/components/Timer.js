@@ -10,7 +10,7 @@ import {
   View,
 } from 'react-native';
 
-import { THEME_COLOR, THEME_COLOR_INV, TAB_BAR_HEIGHT } from '../const';
+import { THEME_COLOR, TAB_BAR_HEIGHT } from '../const';
 
 const BUTTON_WIDTH = 100;
 
