@@ -11,25 +11,6 @@ import {
 
 import { Scene } from '../components';
 
-export default class Settings extends Component {
-
-  render() {
-    return (
-      <Scene title="Settings">
-        <View style={styles.container}>
-          <Text style={styles.text}>Settings</Text>
-        </View>
-      </Scene>
-    );
-  }
-
-}
-
-
-Settings.propTypes = {
-  navigator: PropTypes.object,
-};
-
 
 const styles = StyleSheet.create({
   container: {
@@ -42,3 +23,29 @@ const styles = StyleSheet.create({
     color: '#f00',
   },
 });
+
+
+export default class Settings extends Component {
+
+  renderContent() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.text}>Settings</Text>
+      </View>
+    );
+  }
+
+  render() {
+    return (
+      <Scene title="Settings">
+        {this.renderContent()}
+      </Scene>
+    );
+  }
+
+}
+
+
+Settings.propTypes = {
+  navigator: PropTypes.object,
+};
