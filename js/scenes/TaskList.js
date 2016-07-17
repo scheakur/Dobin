@@ -53,20 +53,41 @@ class TaskList extends Component {
   }
 
 
+  renderTimer() {
+    return (
+      <View style={styles.timerContaienr}>
+        <Timer minutes={25} />
+      </View>
+    );
+  }
+
+
+  renderList() {
+    return (
+      <ListView
+        enableEmptySections
+        dataSource={this.state.dataSource.cloneWithRows(this.props.tasks)}
+        renderRow={this.renderRow}
+      />
+    );
+  }
+
+
+  renderForm() {
+    return (
+      <View style={styles.formContaienr}>
+        <TaskForm onSave={this.props.addTask} />
+      </View>
+    );
+  }
+
+
   render() {
     return (
       <Scene title="Task List">
-        <View style={styles.timerContaienr}>
-          <Timer minutes={25} />
-        </View>
-        <ListView
-          enableEmptySections
-          dataSource={this.state.dataSource.cloneWithRows(this.props.tasks)}
-          renderRow={this.renderRow}
-        />
-        <View style={styles.formContaienr}>
-          <TaskForm onSave={this.props.addTask} />
-        </View>
+        {this.renderTimer()}
+        {this.renderList()}
+        {this.renderForm()}
       </Scene>
     );
   }
