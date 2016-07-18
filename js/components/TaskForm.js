@@ -11,7 +11,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import { THEME_COLOR, THEME_COLOR_INV, COLOR_GREY } from '../const';
+import { THEME_COLOR, THEME_COLOR_INV, COLOR_GRAY } from '../const';
 
 const DEFAULT_HEIGHT = 32;
 
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: COLOR_GREY,
+    backgroundColor: COLOR_GRAY,
     padding: 5,
   },
   input: {
