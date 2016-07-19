@@ -50,6 +50,8 @@ export default class Timer extends Component {
     super(props);
 
     this.start = this.start.bind(this);
+    this.pause = this.pause.bind(this);
+    this.resume = this.resume.bind(this);
     this.stop = this.stop.bind(this);
 
     const goal = props.hours * 60 * 60 + props.minutes * 60 + props.seconds;
@@ -58,12 +60,22 @@ export default class Timer extends Component {
       goal,
       started: 0,
       now: 0,
+      elapsed: 0,
     };
   }
 
 
   componentWillUnmount() {
     this.stop();
+  }
+
+
+  runTimer() {
+    this.id = setInterval(() => {
+      this.setState({
+        now: Date.now(),
+      });
+    }, 1000);
   }
 
 
@@ -74,11 +86,30 @@ export default class Timer extends Component {
       now,
     });
 
-    this.id = setInterval(() => {
-      this.setState({
-        now: Date.now(),
-      });
-    }, 1000);
+    this.runTimer();
+  }
+
+
+  pause() {
+    if (this.id) {
+      clearInterval(this.id);
+    }
+
+    const elapsed = this.state.now - this.state.started;
+
+    this.setState({ elapsed });
+  }
+
+
+  resume() {
+    const now = Date.now();
+    this.setState({
+      started: now - this.state.elapsed,
+      now,
+      elapsed: 0,
+    });
+
+    this.runTimer();
   }
 
 
@@ -90,6 +121,7 @@ export default class Timer extends Component {
     this.setState({
       started: 0,
       now: 0,
+      elapsed: 0,
     });
   }
 
@@ -114,8 +146,21 @@ export default class Timer extends Component {
   }
 
 
-  renderToggleButton() {
+  renderPauseResumeButton() {
+    if (this.state.elapsed > 0) {
+      return this.renderButton('RESUME', this.resume);
+    }
+
     if (this.state.started > 0) {
+      return this.renderButton('PAUSE', this.pause);
+    }
+
+    return this.renderSpacer();
+  }
+
+
+  renderToggleButton() {
+    if (this.state.elapsed > 0 || this.state.started > 0) {
       return this.renderButton('STOP', this.stop);
     }
 
@@ -137,7 +182,7 @@ export default class Timer extends Component {
 
     return (
       <View style={styles.container}>
-        {this.renderSpacer()}
+        {this.renderPauseResumeButton()}
         <Text style={styles.text}>{hours}:{minutes}:{seconds}</Text>
         {this.renderToggleButton()}
       </View>
