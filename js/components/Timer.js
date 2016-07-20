@@ -60,7 +60,7 @@ export default class Timer extends Component {
       goal,
       started: 0,
       now: 0,
-      elapsed: 0,
+      temporalElapsed: 0,
     };
   }
 
@@ -95,18 +95,18 @@ export default class Timer extends Component {
       clearInterval(this.id);
     }
 
-    const elapsed = this.state.now - this.state.started;
+    const temporalElapsed = this.state.now - this.state.started;
 
-    this.setState({ elapsed });
+    this.setState({ temporalElapsed });
   }
 
 
   resume() {
     const now = Date.now();
     this.setState({
-      started: now - this.state.elapsed,
+      started: now - this.state.temporalElapsed,
       now,
-      elapsed: 0,
+      temporalElapsed: 0,
     });
 
     this.runTimer();
@@ -121,7 +121,7 @@ export default class Timer extends Component {
     this.setState({
       started: 0,
       now: 0,
-      elapsed: 0,
+      temporalElapsed: 0,
     });
   }
 
@@ -147,7 +147,7 @@ export default class Timer extends Component {
 
 
   renderPauseResumeButton() {
-    if (this.state.elapsed > 0) {
+    if (this.state.temporalElapsed > 0) {
       return this.renderButton('RESUME', this.resume);
     }
 
@@ -160,7 +160,7 @@ export default class Timer extends Component {
 
 
   renderToggleButton() {
-    if (this.state.elapsed > 0 || this.state.started > 0) {
+    if (this.state.temporalElapsed > 0 || this.state.started > 0) {
       return this.renderButton('STOP', this.stop);
     }
 
