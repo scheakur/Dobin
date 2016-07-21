@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 
 import { connect } from 'react-redux';
+import KeyboardSpacer from 'react-native-keyboard-spacer';
 import { Scene, Task, TaskForm, Timer } from '../components';
 import actions from '../actions';
 
@@ -88,6 +89,7 @@ class TaskList extends Component {
         {this.renderTimer()}
         {this.renderList()}
         {this.renderForm()}
+        <KeyboardSpacer />
       </Scene>
     );
   }
