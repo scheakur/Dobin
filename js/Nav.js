@@ -32,7 +32,6 @@ class Nav extends Component {
 
 
   configureScene(route) {
-    console.log('configure', route);
     if (route.home) {
       return Navigator.SceneConfigs.PushFromRight;
     }
@@ -60,8 +59,6 @@ class Nav extends Component {
 
 
   render() {
-    console.log('render nav');
-
     return (
       <Navigator
         style={styles.container}
