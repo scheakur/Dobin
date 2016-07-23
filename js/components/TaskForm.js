@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: COLOR_GRAY,
     padding: 5,
+    paddingLeft: 7,
   },
   input: {
     flex: 1,
