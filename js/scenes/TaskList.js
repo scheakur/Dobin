@@ -6,19 +6,21 @@ import React, {
 import {
   ListView,
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
 
 import { connect } from 'react-redux';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
 import Drawer from 'react-native-drawer';
-import { Scene, Task, TaskForm, Timer } from '../components';
+import { Scene, Task, TaskForm, Timer, Menu } from '../components';
 import actions from '../actions';
-import { STATUS_BAR_HEIGHT } from '../const';
 
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingLeft: 10,
+  },
   timerContaienr: {
     top: 0,
   },
@@ -26,6 +28,16 @@ const styles = StyleSheet.create({
     bottom: 0,
   },
 });
+
+
+// Plain Old JavaScript Object
+const drawerStyle = {
+  drawer: {
+    shadowColor: '#000000',
+    shadowOpacity: 0.8,
+    shadowRadius: 3,
+  },
+};
 
 
 class TaskList extends Component {
@@ -97,15 +109,7 @@ class TaskList extends Component {
 
   renderMenu() {
     return (
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: '#263238',
-          paddingTop: STATUS_BAR_HEIGHT,
-        }}
-      >
-        <Text style={{ color: '#fff' }}>menu</Text>
-      </View>
+      <Menu />
     );
   }
 
@@ -120,15 +124,9 @@ class TaskList extends Component {
         openDrawerOffset={0.2}
         panCloseMask={0.2}
         closedDrawerOffset={-10}
-        styles={{
-          drawer: {
-            shadowColor: '#000000',
-            shadowOpacity: 0.8,
-            shadowRadius: 3,
-          },
-        }}
+        styles={drawerStyle}
       >
-        <View style={{ paddingLeft: 10, flex: 1 }}>
+        <View style={styles.container}>
           <Scene title="Task List" leftItem={this.makeMenuButton()}>
             {this.renderTimer()}
             {this.renderList()}
