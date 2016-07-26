@@ -11,16 +11,11 @@ import {
 
 import { connect } from 'react-redux';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
-import Drawer from 'react-native-drawer';
-import { Scene, Task, TaskForm, Timer, Menu } from '../components';
+import { Scene, Task, TaskForm, Timer, MenuDrawer } from '../components';
 import actions from '../actions';
 
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingLeft: 10,
-  },
   timerContaienr: {
     top: 0,
   },
@@ -28,16 +23,6 @@ const styles = StyleSheet.create({
     bottom: 0,
   },
 });
-
-
-// Plain Old JavaScript Object
-const drawerStyle = {
-  drawer: {
-    shadowColor: '#000000',
-    shadowOpacity: 0.8,
-    shadowRadius: 3,
-  },
-};
 
 
 class TaskList extends Component {
@@ -63,7 +48,7 @@ class TaskList extends Component {
     return {
       type: 'icon',
       iconName: 'menu',
-      onPress: () => { this.refs.drawer.open(); },
+      onPress: () => { this.drawer.open(); },
     };
   }
 
@@ -107,34 +92,16 @@ class TaskList extends Component {
   }
 
 
-  renderMenu() {
-    return (
-      <Menu />
-    );
-  }
-
-
   render() {
     return (
-      <Drawer
-        ref="drawer"
-        type="overlay"
-        tapToClose
-        content={this.renderMenu()}
-        openDrawerOffset={0.2}
-        panCloseMask={0.2}
-        closedDrawerOffset={-10}
-        styles={drawerStyle}
-      >
-        <View style={styles.container}>
-          <Scene title="Task List" leftItem={this.makeMenuButton()}>
-            {this.renderTimer()}
-            {this.renderList()}
-            {this.renderForm()}
-            <KeyboardSpacer />
-          </Scene>
-        </View>
-      </Drawer>
+      <MenuDrawer ref={drawer => { this.drawer = drawer; }}>
+        <Scene title="Task List" leftItem={this.makeMenuButton()}>
+          {this.renderTimer()}
+          {this.renderList()}
+          {this.renderForm()}
+          <KeyboardSpacer />
+        </Scene>
+      </MenuDrawer>
     );
   }
 

@@ -1,6 +1,7 @@
 import CheckBox from './CheckBox';
 import Header from './Header';
 import Menu from './Menu';
+import MenuDrawer from './MenuDrawer';
 import RowButton from './RowButton';
 import Scene from './Scene';
 import Task from './Task';
@@ -12,6 +13,7 @@ export {
   CheckBox,
   Header,
   Menu,
+  MenuDrawer,
   RowButton,
   Scene,
   Task,
