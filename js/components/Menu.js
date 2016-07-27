@@ -34,8 +34,6 @@ const styles = StyleSheet.create({
 });
 
 
-
-
 export default class Menu extends Component {
 
   constructor(props) {
