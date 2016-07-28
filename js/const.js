@@ -1,6 +1,7 @@
 export const THEME_COLOR = '#e91e63';
 export const THEME_COLOR_INV = '#fce4ec';
 export const COLOR_GRAY = '#e0e0e0';
+export const COLOR_DARK = '#263238';
 export const STATUS_BAR_STYLE = 'light-content';
 
 export const STATUS_BAR_HEIGHT = 20;

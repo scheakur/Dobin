@@ -9,26 +9,26 @@ import {
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import { STATUS_BAR_HEIGHT } from '../const';
+import { STATUS_BAR_HEIGHT, COLOR_DARK } from '../const';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#263238',
-    paddingTop: STATUS_BAR_HEIGHT,
+    backgroundColor: COLOR_DARK,
+    paddingTop: STATUS_BAR_HEIGHT + 20,
   },
   menu: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 5,
+    padding: 10,
   },
   icon: {
-    fontSize: 16,
+    fontSize: 18,
     color: '#fff',
-    marginRight: 5,
+    marginRight: 10,
   },
   text: {
-    fontSize: 16,
+    fontSize: 18,
     color: '#fff',
   },
 });
