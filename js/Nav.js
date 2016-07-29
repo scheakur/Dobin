@@ -10,6 +10,7 @@ import {
 import { connect } from 'react-redux';
 
 import {
+  Settings,
   TaskList,
   TaskForm,
 } from './scenes';
@@ -49,6 +50,12 @@ class Nav extends Component {
     if (route.taskForm) {
       return (
         <TaskForm navigator={navigator} {...route} />
+      );
+    }
+
+    if (route.settings) {
+      return (
+        <Settings navigator={navigator} {...route} />
       );
     }
 

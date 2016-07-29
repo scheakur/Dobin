@@ -38,7 +38,7 @@ export default class MenuDrawer extends Component {
 
   renderMenu() {
     return (
-      <Menu />
+      <Menu navigator={this.props.navigator} />
     );
   }
 
@@ -66,5 +66,6 @@ export default class MenuDrawer extends Component {
 
 
 MenuDrawer.propTypes = {
+  navigator: PropTypes.object,
   children: PropTypes.node,
 };

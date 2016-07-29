@@ -94,7 +94,10 @@ class TaskList extends Component {
 
   render() {
     return (
-      <MenuDrawer ref={drawer => { this.drawer = drawer; }}>
+      <MenuDrawer
+        navigator={this.props.navigator}
+        ref={drawer => { this.drawer = drawer; }}
+      >
         <Scene title="Task List" leftItem={this.makeMenuButton()}>
           {this.renderTimer()}
           {this.renderList()}

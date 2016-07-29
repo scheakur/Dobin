@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 import {
   StyleSheet,
@@ -47,17 +47,17 @@ export default class Menu extends Component {
       {
         label: 'Tasks',
         icon: 'playlist-add-check',
-        onPress: () => {},
+        onPress: () => { this.props.navigator.replace({ taskList: true }) },
       },
       {
         label: 'History',
         icon: 'history',
-        onPress: () => {},
+        onPress: () => { this.props.navigator.replace({ history: true }) },
       },
       {
         label: 'Settings',
         icon: 'settings',
-        onPress: () => {},
+        onPress: () => { this.props.navigator.replace({ settings: true }) },
       },
     ];
   }
@@ -91,3 +91,8 @@ export default class Menu extends Component {
   }
 
 }
+
+
+Menu.propTypes = {
+  navigator: PropTypes.object,
+};
