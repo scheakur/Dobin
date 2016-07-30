@@ -69,7 +69,7 @@ class Nav extends Component {
     return (
       <Navigator
         style={styles.container}
-        initialRoute={{ home: true }}
+        initialRoute={{ taskList: true }}
         configureScene={this.configureScene}
         renderScene={this.renderScene}
       />
