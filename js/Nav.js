@@ -12,7 +12,6 @@ import { connect } from 'react-redux';
 import {
   Settings,
   TaskList,
-  TaskForm,
 } from './scenes';
 
 
@@ -33,26 +32,13 @@ class Nav extends Component {
 
 
   configureScene(route) {
-    if (route.home) {
-      return Navigator.SceneConfigs.PushFromRight;
-    }
-
-    if (route.taskForm) {
-      return Navigator.SceneConfigs.FloatFromBottom;
-    }
-
+    console.log(route);
     return Navigator.SceneConfigs.HorizontalSwipeJump;
   }
 
 
   renderScene(route, navigator) {
     console.log('render route', route);
-    if (route.taskForm) {
-      return (
-        <TaskForm navigator={navigator} {...route} />
-      );
-    }
-
     if (route.settings) {
       return (
         <Settings navigator={navigator} {...route} />
