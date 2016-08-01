@@ -11,6 +11,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { STATUS_BAR_HEIGHT, COLOR_DARK } from '../const';
 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
