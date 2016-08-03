@@ -10,6 +10,7 @@ import {
 import { connect } from 'react-redux';
 
 import {
+  History,
   Settings,
   TaskList,
 } from './scenes';
@@ -42,6 +43,12 @@ class Nav extends Component {
     if (route.settings) {
       return (
         <Settings navigator={navigator} {...route} />
+      );
+    }
+
+    if (route.history) {
+      return (
+        <History navigator={navigator} {...route} />
       );
     }
 
