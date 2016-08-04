@@ -11,7 +11,7 @@ import {
 
 import { connect } from 'react-redux';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
-import { Scene, Task, TaskForm, Timer, MenuDrawer } from '../components';
+import { SceneWithMenu, Task, TaskForm, Timer } from '../components';
 import actions from '../actions';
 
 
@@ -40,15 +40,6 @@ class TaskList extends Component {
 
     this.state = {
       dataSource: ds.cloneWithRows(props.tasks),
-    };
-  }
-
-
-  makeMenuButton() {
-    return {
-      type: 'icon',
-      iconName: 'menu',
-      onPress: () => { this.drawer.open(); },
     };
   }
 
@@ -94,17 +85,12 @@ class TaskList extends Component {
 
   render() {
     return (
-      <MenuDrawer
-        navigator={this.props.navigator}
-        ref={drawer => { this.drawer = drawer; }}
-      >
-        <Scene title="Task List" leftItem={this.makeMenuButton()}>
-          {this.renderTimer()}
-          {this.renderList()}
-          {this.renderForm()}
-          <KeyboardSpacer />
-        </Scene>
-      </MenuDrawer>
+      <SceneWithMenu title="Task List" navigator={this.props.navigator}>
+        {this.renderTimer()}
+        {this.renderList()}
+        {this.renderForm()}
+        <KeyboardSpacer />
+      </SceneWithMenu>
     );
   }
 

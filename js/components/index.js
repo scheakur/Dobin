@@ -4,6 +4,7 @@ import Menu from './Menu';
 import MenuDrawer from './MenuDrawer';
 import RowButton from './RowButton';
 import Scene from './Scene';
+import SceneWithMenu from './SceneWithMenu';
 import Task from './Task';
 import TaskForm from './TaskForm';
 import TextButton from './TextButton';
@@ -16,6 +17,7 @@ export {
   MenuDrawer,
   RowButton,
   Scene,
+  SceneWithMenu,
   Task,
   TaskForm,
   TextButton,

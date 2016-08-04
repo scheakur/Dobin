@@ -9,7 +9,7 @@ import {
   View,
 } from 'react-native';
 
-import { Scene, MenuDrawer } from '../components';
+import { SceneWithMenu } from '../components';
 
 
 const styles = StyleSheet.create({
@@ -27,15 +27,6 @@ const styles = StyleSheet.create({
 
 export default class Settings extends Component {
 
-  makeMenuButton() {
-    return {
-      type: 'icon',
-      iconName: 'menu',
-      onPress: () => { this.drawer.open(); },
-    };
-  }
-
-
   renderContent() {
     return (
       <View style={styles.container}>
@@ -46,14 +37,9 @@ export default class Settings extends Component {
 
   render() {
     return (
-      <MenuDrawer
-        navigator={this.props.navigator}
-        ref={drawer => { this.drawer = drawer; }}
-      >
-        <Scene title="Settings" leftItem={this.makeMenuButton()}>
-          {this.renderContent()}
-        </Scene>
-      </MenuDrawer>
+      <SceneWithMenu title="Settings" navigator={this.props.navigator}>
+        {this.renderContent()}
+      </SceneWithMenu>
     );
   }
 

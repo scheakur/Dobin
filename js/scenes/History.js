@@ -8,7 +8,7 @@ import {
   Text,
 } from 'react-native';
 
-import { Scene, MenuDrawer } from '../components';
+import { SceneWithMenu } from '../components';
 
 
 const styles = StyleSheet.create({
@@ -26,25 +26,11 @@ class History extends Component {
   }
 
 
-  makeMenuButton() {
-    return {
-      type: 'icon',
-      iconName: 'menu',
-      onPress: () => { this.drawer.open(); },
-    };
-  }
-
-
   render() {
     return (
-      <MenuDrawer
-        navigator={this.props.navigator}
-        ref={drawer => { this.drawer = drawer; }}
-      >
-        <Scene title="History" leftItem={this.makeMenuButton()}>
-          <Text style={styles.text}>History</Text>
-        </Scene>
-      </MenuDrawer>
+      <SceneWithMenu title="History" navigator={this.props.navigator}>
+        <Text style={styles.text}>History</Text>
+      </SceneWithMenu>
     );
   }
 
