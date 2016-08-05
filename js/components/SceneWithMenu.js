@@ -1,4 +1,4 @@
-import React, { Component, PropTypes, } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Scene, MenuDrawer } from '../components';
 
 export default class SceneWithMenu extends Component {
