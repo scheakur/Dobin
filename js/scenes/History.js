@@ -64,6 +64,8 @@ class History extends Component {
       <Task
         {...task}
         key={`task-${sectionId}-${rowId}`}
+        checked
+        readOnly
       />
     );
   }

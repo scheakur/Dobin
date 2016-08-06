@@ -39,7 +39,11 @@ export default class Task extends Component {
 
   renderCheckBox() {
     return (
-      <CheckBox style={styles.checkBox} />
+      <CheckBox
+        style={styles.checkBox}
+        checked={this.props.checked}
+        readOnly={this.props.readOnly}
+      />
     );
   }
 
@@ -66,5 +70,12 @@ export default class Task extends Component {
 
 Task.propTypes = {
   checked: PropTypes.bool,
+  readOnly: PropTypes.bool,
   title: PropTypes.string,
+};
+
+
+Task.defaultProps = {
+  checked: false,
+  readOnly: false,
 };

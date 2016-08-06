@@ -10,13 +10,16 @@ import {
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import { THEME_COLOR } from '../const';
+import { THEME_COLOR, COLOR_GRAY } from '../const';
 
 
 const styles = StyleSheet.create({
   checkBox: {
     fontSize: 24,
     color: THEME_COLOR,
+  },
+  readOnly: {
+    color: COLOR_GRAY,
   },
 });
 
@@ -37,6 +40,10 @@ export default class CheckBox extends Component {
 
 
   onPress() {
+    if (this.props.readOnly) {
+      return;
+    }
+
     const checked = !this.state.checked;
 
     this.props.onChange(checked);
@@ -45,16 +52,25 @@ export default class CheckBox extends Component {
   }
 
 
+  get checkBoxStyle() {
+    if (this.props.readOnly) {
+      return [styles.checkBox, styles.readOnly];
+    }
+
+    return [styles.checkBox];
+  }
+
+
   renderChecked() {
     return (
-      <Icon style={styles.checkBox} name="check-box" />
+      <Icon style={this.checkBoxStyle} name="check-box" />
     );
   }
 
 
   renderUnchecked() {
     return (
-      <Icon style={styles.checkBox} name="check-box-outline-blank" />
+      <Icon style={this.checkBoxStyle} name="check-box-outline-blank" />
     );
   }
 
@@ -85,6 +101,7 @@ export default class CheckBox extends Component {
 
 CheckBox.propTypes = {
   checked: PropTypes.bool,
+  readOnly: PropTypes.bool,
   onChange: PropTypes.func,
   style: PropTypes.number,
 };
@@ -92,5 +109,6 @@ CheckBox.propTypes = {
 
 CheckBox.defaultProps = {
   checked: false,
+  readOnly: false,
   onChange: () => {},
 };
