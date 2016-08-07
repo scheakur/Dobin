@@ -65,7 +65,7 @@ class History extends Component {
         {...task}
         key={`task-${sectionId}-${rowId}`}
         checked
-        readOnly
+        readonly
       />
     );
   }

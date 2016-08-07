@@ -42,7 +42,7 @@ export default class Task extends Component {
       <CheckBox
         style={styles.checkBox}
         checked={this.props.checked}
-        readOnly={this.props.readOnly}
+        readonly={this.props.readonly}
       />
     );
   }
@@ -70,12 +70,12 @@ export default class Task extends Component {
 
 Task.propTypes = {
   checked: PropTypes.bool,
-  readOnly: PropTypes.bool,
+  readonly: PropTypes.bool,
   title: PropTypes.string,
 };
 
 
 Task.defaultProps = {
   checked: false,
-  readOnly: false,
+  readonly: false,
 };

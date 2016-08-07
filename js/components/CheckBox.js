@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     color: THEME_COLOR,
   },
-  readOnly: {
+  readonly: {
     color: COLOR_GRAY,
   },
 });
@@ -40,7 +40,7 @@ export default class CheckBox extends Component {
 
 
   onPress() {
-    if (this.props.readOnly) {
+    if (this.props.readonly) {
       return;
     }
 
@@ -53,8 +53,8 @@ export default class CheckBox extends Component {
 
 
   get checkBoxStyle() {
-    if (this.props.readOnly) {
-      return [styles.checkBox, styles.readOnly];
+    if (this.props.readonly) {
+      return [styles.checkBox, styles.readonly];
     }
 
     return [styles.checkBox];
@@ -101,7 +101,7 @@ export default class CheckBox extends Component {
 
 CheckBox.propTypes = {
   checked: PropTypes.bool,
-  readOnly: PropTypes.bool,
+  readonly: PropTypes.bool,
   onChange: PropTypes.func,
   style: PropTypes.number,
 };
@@ -109,6 +109,6 @@ CheckBox.propTypes = {
 
 CheckBox.defaultProps = {
   checked: false,
-  readOnly: false,
+  readonly: false,
   onChange: () => {},
 };
