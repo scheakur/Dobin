@@ -11,10 +11,17 @@ import {
 } from 'react-native';
 
 import { connect } from 'react-redux';
+import moment from 'moment';
 import { SceneWithMenu, Task } from '../components';
+import { COLOR_GRAY } from '../const';
 
 
 const styles = StyleSheet.create({
+  sectionHeader: {
+    backgroundColor: COLOR_GRAY,
+    paddingLeft: 5,
+    paddingTop: 5,
+  },
   text: {
     color: '#333',
   },
@@ -51,9 +58,11 @@ class History extends Component {
 
 
   renderSectionHeader(day, sectionId) {
+    const date = moment(day.date).format('YYYY/M/D (ddd)');
+
     return (
-      <View key={`section-${sectionId}`}>
-        <Text style={styles.text}>{String(day.date)}</Text>
+      <View style={styles.sectionHeader} key={`section-${sectionId}`}>
+        <Text style={styles.text}>{date}</Text>
       </View>
     );
   }

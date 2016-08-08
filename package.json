@@ -7,6 +7,7 @@
     "lint": "eslint --quiet --cache --ext .js js"
   },
   "dependencies": {
+    "moment": "^2.14.1",
     "react": "^15.1.2",
     "react-native": "^0.29.0",
     "react-native-drawer": "^2.2.6",
