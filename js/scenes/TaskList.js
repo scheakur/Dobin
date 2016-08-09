@@ -49,6 +49,8 @@ class TaskList extends Component {
       <Task
         {...task}
         key={`task-${sectionId}-${rowId}`}
+        checked={task.done}
+        onChange={() => this.props.toggleTask(task)}
       />
     );
   }
@@ -107,7 +109,8 @@ TaskList.propTypes = {
 export default connect(
   ({ tasks }) => ({ tasks: tasks.tasks }),
   (dispatch) => ({
-    addTask: (task) => dispatch(actions.addTask(task)),
+    addTask: task => dispatch(actions.addTask(task)),
+    toggleTask: task => dispatch(actions.toggleTask(task)),
   })
 )(TaskList);
 

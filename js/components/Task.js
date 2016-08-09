@@ -43,6 +43,7 @@ export default class Task extends Component {
         style={styles.checkBox}
         checked={this.props.checked}
         readonly={this.props.readonly}
+        onChange={this.props.onChange}
       />
     );
   }
@@ -72,10 +73,12 @@ Task.propTypes = {
   checked: PropTypes.bool,
   readonly: PropTypes.bool,
   title: PropTypes.string,
+  onChange: PropTypes.func,
 };
 
 
 Task.defaultProps = {
   checked: false,
   readonly: false,
+  onChange: () => {},
 };

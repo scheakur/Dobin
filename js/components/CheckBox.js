@@ -30,25 +30,16 @@ export default class CheckBox extends Component {
     super(...args);
 
     this.onPress = this.onPress.bind(this);
-
-    const props = args[0];
-
-    this.state = {
-      checked: props.checked,
-    };
   }
 
 
   onPress() {
+    console.log('checkbox on press');
     if (this.props.readonly) {
       return;
     }
 
-    const checked = !this.state.checked;
-
-    this.props.onChange(checked);
-
-    this.setState({ checked });
+    this.props.onChange();
   }
 
 
@@ -76,7 +67,7 @@ export default class CheckBox extends Component {
 
 
   renderCheckBox() {
-    if (this.state.checked) {
+    if (this.props.checked) {
       return this.renderChecked();
     }
 
