@@ -38,7 +38,7 @@ class History extends Component {
 
     const ds = new ListView.DataSource({
       getSectionHeaderData: (data, sectionId) => data[sectionId],
-      getRowData: (data, sectionId, rowId) => data[sectionId].tasks[rowId],
+      getRowData: (data, sectionId, rowId) => data[sectionId][rowId],
       rowHasChanged: (r1, r2) => r1 !== r2,
     });
 
@@ -51,14 +51,15 @@ class History extends Component {
 
 
   buildDataSource() {
-    const sectionIds = this.props.history.map((_, index) => index);
-    const rowIds = this.props.history.map(day => day.tasks.map((_, index) => index));
-    return this.state.dataSource.cloneWithRowsAndSections(this.props.history, sectionIds, rowIds);
+    const { history } = this.props;
+    const sectionIds = Object.keys(history);
+    const rowIds = Object.keys(history).map(key => history[key].map((_, index) => index));
+    return this.state.dataSource.cloneWithRowsAndSections(history, sectionIds, rowIds);
   }
 
 
   renderSectionHeader(day, sectionId) {
-    const date = moment(day.date).format('YYYY/M/D (ddd)');
+    const date = moment(sectionId).format('YYYY/M/D (ddd)');
 
     return (
       <View style={styles.sectionHeader} key={`section-${sectionId}`}>
@@ -105,7 +106,7 @@ class History extends Component {
 
 History.propTypes = {
   navigator: PropTypes.object,
-  history: PropTypes.array,
+  history: PropTypes.object,
 };
 
 
