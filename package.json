@@ -8,21 +8,21 @@
   },
   "dependencies": {
     "moment": "^2.14.1",
-    "react": "^15.1.2",
-    "react-native": "^0.29.0",
+    "react": "^15.2.1",
+    "react-native": "^0.31.0",
     "react-native-drawer": "^2.2.6",
     "react-native-keyboard-spacer": "^0.3.0",
     "react-native-vector-icons": "^2.0.3",
     "react-redux": "^4.4.5",
     "redux": "^3.5.2",
-    "redux-actions": "^0.9.1",
+    "redux-actions": "^0.10.1",
     "redux-thunk": "^2.1.0"
   },
   "devDependencies": {
-    "eslint": "^2.13.1",
-    "eslint-config-airbnb": "^9.0.1",
-    "eslint-plugin-import": "^1.9.2",
-    "eslint-plugin-jsx-a11y": "^1.5.3",
-    "eslint-plugin-react": "^5.2.2"
+    "eslint": "^3.2.2",
+    "eslint-config-airbnb": "^10.0.0",
+    "eslint-plugin-import": "^1.13.0",
+    "eslint-plugin-jsx-a11y": "^2.1.0",
+    "eslint-plugin-react": "^6.0.0"
   }
 }
