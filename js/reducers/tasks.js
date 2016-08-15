@@ -158,20 +158,20 @@ const initialState = {
 
 export default handleActions({
 
-  'add task: start'(state) {
+  'add task: start': function (state) {
     return Object.assign({}, state, {
       adding: true,
     });
   },
 
-  'add task: end'(state, action) {
+  'add task: end': function (state, action) {
     return Object.assign({}, state, {
       adding: false,
       tasks: state.tasks.concat(action.payload),
     });
   },
 
-  'toggle task: start'(state, action) {
+  'toggle task: start': function (state, action) {
     return Object.assign({}, state, {
       tasks: state.tasks.map(task => {
         if (task.id === action.payload.id) {

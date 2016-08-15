@@ -33,7 +33,7 @@ const drawerStyle = {
 export default class MenuDrawer extends Component {
 
   open() {
-    this.refs.drawer.open();
+    this.drawer.open();
   }
 
   renderMenu() {
@@ -46,7 +46,7 @@ export default class MenuDrawer extends Component {
   render() {
     return (
       <Drawer
-        ref="drawer"
+        ref={comp => { this.drawer = comp; }}
         type="overlay"
         tapToClose
         content={this.renderMenu()}

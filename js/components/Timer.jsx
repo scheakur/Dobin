@@ -54,7 +54,7 @@ export default class Timer extends Component {
     this.resume = this.resume.bind(this);
     this.stop = this.stop.bind(this);
 
-    const goal = props.hours * 60 * 60 + props.minutes * 60 + props.seconds;
+    const goal = (props.hours * 60 * 60) + (props.minutes * 60) + props.seconds;
 
     this.state = {
       goal,

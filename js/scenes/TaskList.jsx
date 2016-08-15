@@ -103,6 +103,7 @@ TaskList.propTypes = {
   navigator: PropTypes.object,
   tasks: PropTypes.array,
   addTask: PropTypes.func,
+  toggleTask: PropTypes.func,
 };
 
 

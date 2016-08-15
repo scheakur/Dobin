@@ -7,7 +7,7 @@ const initialState = {
 
 export default handleActions({
 
-  'setup: end'(state, action) {
+  'setup: end': function (state, action) {
     console.log('%caction', 'color: red; font-size: large;', action.type);
 
     return Object.assign({}, state, {

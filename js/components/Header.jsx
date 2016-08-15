@@ -11,6 +11,8 @@ import {
   View,
 } from 'react-native';
 
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
 import {
   HEADER_HEIGHT,
   STATUS_BAR_HEIGHT,
@@ -18,8 +20,6 @@ import {
   THEME_COLOR_INV,
   NAVIGATION_BAR_HEIGHT,
 } from '../const';
-
-import Icon from 'react-native-vector-icons/MaterialIcons';
 
 
 const styles = StyleSheet.create({

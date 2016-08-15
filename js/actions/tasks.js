@@ -15,4 +15,4 @@ export const addTask = task => dispatch => {
 export const toggleTask = task => dispatch => {
   dispatch(toggleTaskStart(task));
   dispatch(toggleTaskEnd(task));
-}
+};

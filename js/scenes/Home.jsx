@@ -7,6 +7,8 @@ import {
   TabBarIOS,
 } from 'react-native';
 
+import { TabBarItemIOS } from 'react-native-vector-icons/MaterialIcons';
+
 import {
   TaskList,
   TaskTimer,
@@ -15,7 +17,6 @@ import {
 
 import { THEME_COLOR } from '../const';
 
-import { TabBarItemIOS } from 'react-native-vector-icons/MaterialIcons';
 
 export default class Home extends Component {
 

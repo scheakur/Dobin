@@ -89,7 +89,7 @@ export default class TaskForm extends Component {
       height: DEFAULT_HEIGHT,
     });
 
-    this.refs.input.clear();
+    this.input.clear();
   }
 
 
@@ -101,7 +101,7 @@ export default class TaskForm extends Component {
     return (
       <View style={styles.container}>
         <TextInput
-          ref="input"
+          ref={comp => { this.input = comp; }}
           style={[styles.input, heightStyle]}
           placeholder="Input task..."
           onChange={this.onChange}
