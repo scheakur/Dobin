@@ -64,10 +64,15 @@ export default class TaskForm extends Component {
 
 
   onChange(event) {
+    const { text, contentSize } = event.nativeEvent;
+    const height = Math.max(Math.min(contentSize.height, 100), DEFAULT_HEIGHT);
+
     this.setState({
-      task: event.nativeEvent.text,
-      height: Math.max(Math.min(event.nativeEvent.contentSize.height, 100), DEFAULT_HEIGHT),
+      task: text,
+      height,
     });
+
+    this.props.onChange(text, height);
   }
 
 
@@ -124,9 +129,11 @@ export default class TaskForm extends Component {
 
 TaskForm.propTypes = {
   onSave: PropTypes.func,
+  onChange: PropTypes.func,
 };
 
 
 TaskForm.defaultProps = {
   onSave: () => {},
+  onChange: () => {},
 };

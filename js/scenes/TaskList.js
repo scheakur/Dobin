@@ -15,12 +15,12 @@ import { SceneWithMenu, Task, TaskForm, Timer } from '../components';
 import actions from '../actions';
 
 
+const ROW_HEIGHT = 44;
+
+
 const styles = StyleSheet.create({
   timerContaienr: {
-    top: 0,
-  },
-  formContaienr: {
-    bottom: 0,
+    height: ROW_HEIGHT,
   },
 });
 
@@ -31,6 +31,8 @@ class TaskList extends Component {
     super(...args);
 
     this.renderRow = this.renderRow.bind(this);
+    this.onSave = this.onSave.bind(this);
+    this.updateForm = this.updateForm.bind(this);
 
     const ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2,
@@ -40,7 +42,19 @@ class TaskList extends Component {
 
     this.state = {
       dataSource: ds.cloneWithRows(props.tasks),
+      height: ROW_HEIGHT,
     };
+  }
+
+
+  onSave(data) {
+    this.props.addTask(data);
+    this.setState({ height: ROW_HEIGHT });
+  }
+
+
+  updateForm(text, inputHeight) {
+    this.setState({ height: inputHeight + 12 });
   }
 
 
@@ -78,8 +92,8 @@ class TaskList extends Component {
 
   renderForm() {
     return (
-      <View style={styles.formContaienr}>
-        <TaskForm onSave={this.props.addTask} />
+      <View style={{ height: this.state.height }}>
+        <TaskForm onSave={this.onSave} onChange={this.updateForm} />
       </View>
     );
   }
